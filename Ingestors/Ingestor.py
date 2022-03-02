@@ -7,8 +7,10 @@ from .CSVIngestor import CSVIngestor
 from .PDFIngestor import PDFIngestor
 from .TextIngestor import TextIngestor
 
+
 class Ingestor(IngestorInterface):
     """Encapsulation for different ingestors."""
+
     ingestors = [DocxIngestor, CSVIngestor, PDFIngestor, TextIngestor]
 
     @classmethod

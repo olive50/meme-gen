@@ -1,20 +1,33 @@
+"""This class is used to generate memes."""
 
-"""This module gives the possiblite to creat a meme based on an image and a quote."""
 import os
 import random
 
 from PIL import Image, ImageFont, ImageDraw
 
+
 class MemeEngine:
-    """"""
+    """The Class tha generate a meme."""
+
     def __init__(self, output_dir):
+        """Instantiate objects."""
         self.output_dir = output_dir
         self.count = 1
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
     def make_meme(self, img_path, text, author, width=500):
-        """ generate meme for using image and a quote(text and author)."""
+        """Generate a mem.
+
+        Arguments:
+        img_path -- the path to the file.
+        text -- the body of the quote.
+        author -- the author of this quote.
+        width -- the widht of the image.
+
+        return :
+        a path to the generated meme(image with text).
+        """
         img = Image.open(img_path)
         outfile = os.path.join(self.output_dir, f"temp-{self.count}.jpg")
         self.count += 1

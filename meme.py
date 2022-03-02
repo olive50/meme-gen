@@ -1,3 +1,5 @@
+"""Enty point for the app via CLI."""
+
 import os
 import random
 import argparse
@@ -6,8 +8,15 @@ import argparse
 from Ingestors import QuoteModel, Ingestor
 from MemeEngine.MemeEngine import MemeEngine
 
+
 def generate_meme(path=None, body=None, author=None):
-    """ """
+    """Generate a meme.
+
+    Arguments:
+    path -- the path to the image
+    body -- the body of the quote
+    author -- the author of the quote.
+    """
     img = None
     quote = None
 
@@ -20,7 +29,6 @@ def generate_meme(path=None, body=None, author=None):
         img = random.choice(imgs)
     else:
         img = path
-
     if body is None:
         quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
                        './_data/DogQuotes/DogQuotesDOCX.docx',
@@ -46,16 +54,15 @@ if __name__ == "__main__":
     # path - path to an image file
     # body - quote body to add to the image
     # author - quote author to add to the image
- 
+
     parser = argparse.ArgumentParser(description="Meme Generator.")
     parser.add_argument("--path", type=str, help="The image path")
     parser.add_argument("--body", type=str, help="The Text of the citation")
-    parser.add_argument("--author",type=str, default="Inknown", help="The author of the quote (citation)")                    
-    
+    parser.add_argument("--author", type=str, default="Inknown",
+                        help="The author of the quote (citation)")
     args = parser.parse_args()
     path = args.path
     body = args.body
     author = args.author
-    
 
     print(generate_meme(args.path, args.body, args.author))
